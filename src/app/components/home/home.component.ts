@@ -1,6 +1,9 @@
 import { Component, OnInit, ElementRef, HostListener, PLATFORM_ID, Inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-import { select, scaleLinear, easeLinear } from 'd3';
+import { select } from 'd3-selection';
+import { scaleLinear } from 'd3-scale';
+import { easeLinear } from 'd3-ease';
+import 'd3-transition';
 
 @Component({
   selector: 'app-home',
@@ -31,13 +34,13 @@ export class HomeComponent implements OnInit {
     this.x = (this.x < 30) ? this.x += 1 : 0;
     this.g.selectAll('circle')
       .transition()
-      .duration(750)
+      .duration(650)
       .ease(easeLinear)
       .attr('cx', (d: any, i: number) => {
         const move = ((this.w / 30) * i) + (this.w / 30) * this.x;
         return (move > this.w) ? move - this.w : move;
       })
-      .on('end', (val, size) => {
+      .on('end', (val: number, size: number) => {
         if (size === 29) {
           this.animation();
         }
@@ -62,10 +65,10 @@ export class HomeComponent implements OnInit {
       .data(data)
       .enter()
       .append('circle')
-      .attr('r', (d: any, i: number) => this.getRandomInt(10, 30))
+      .attr('r', (d: any, i: number) => this.getRandomInt(this.w < 500 ? 5 : 10, this.w < 500 ? 10 : 30))
       .attr('cx', (d: any, i: number) => (this.w / data.length) * i)
       .attr('cy', (d: any, i: number) => this.getRandomInt(0, this.w))
-      .attr('fill', '#45C2ED');
+      .attr('fill', '#34BEEB');
 
     g.selectAll('circle')
       .data(data)
@@ -105,11 +108,11 @@ export class HomeComponent implements OnInit {
 
     g = svg.append('g');
     g.append('image')
-      .attr('xlink:href', '/assets/images/rocket.svg')
+      .attr('xlink:href', '/assets/images/travel.svg')
       .attr('width', this.w / 5)
       .attr('height', this.w / 5)
       .attr('x', this.w - (this.w / 6 + this.w / 5))
-      .attr('y', this.h / 4);
+      .attr('y', this.w < 500 ? 50 : this.h / 4);
   }
 
   getRandomInt(min: number, max: number): number {

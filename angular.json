@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ng-universal-demo": {
+    "jankuri.com": {
       "root": "",
       "projectType": "application",
       "architect": {
@@ -25,6 +25,11 @@
                 "glob": "favicon.ico",
                 "input": "src",
                 "output": "/"
+              },
+              {
+                "glob": "**/*",
+                "input": "node_modules/@fortawesome/fontawesome-free/webfonts",
+                "output": "/assets/fonts/fa"
               }
             ],
             "styles": [
@@ -48,25 +53,26 @@
                   "replace": "src/environments/environment.ts",
                   "with": "src/environments/environment.prod.ts"
                 }
-              ]
+              ],
+              "index": "src/index.prod.html"
             }
           }
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "ng-universal-demo:build"
+            "browserTarget": "jankuri.com:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "ng-universal-demo:build:production"
+              "browserTarget": "jankuri.com:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ng-universal-demo:build"
+            "browserTarget": "jankuri.com:build"
           }
         },
         "test": {
@@ -90,6 +96,11 @@
                 "glob": "favicon.ico",
                 "input": "src",
                 "output": "/"
+              },
+              {
+                "glob": "**/*",
+                "input": "node_modules/@fortawesome/fontawesome-free/webfonts",
+                "output": "/assets/fonts/fa"
               }
             ]
           }
@@ -125,7 +136,7 @@
         }
       }
     },
-    "ng-universal-demo-e2e": {
+    "jankuri.com-e2e": {
       "root": "",
       "projectType": "application",
       "cli": {},
@@ -135,7 +146,7 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "./protractor.conf.js",
-            "devServerTarget": "ng-universal-demo:serve"
+            "devServerTarget": "jankuri.com:serve"
           }
         },
         "lint": {

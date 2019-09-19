@@ -1,27 +1,6 @@
 .hero-first
-  background: $blue
+  background: $background
   position: relative
-
-  .nav
-    box-shadow: none
-    margin-top: 30px
-
-    .nav-center
-
-      .nav-item
-        font-size: 16px
-        color: $white
-        text-transform: uppercase
-        font-weight: 700
-        margin: 0 5px
-
-        &.icon-item
-          margin: 0 0 0 10px
-          padding: 0 5px
-
-        i
-          color: $white
-
 
   .hero-first-bg
     position: absolute
@@ -38,11 +17,17 @@
     line-height: 50px
     font-family: $font-family-light
 
+    +mobile
+      font-size: 28px
+
   h2
     color: $white
     font-size: 22px
     line-height: 36px
     font-family: $font-family-thin
+
+    +mobile
+      font-size: 18px
 
   .more-buttons
     width: 100%
@@ -53,9 +38,7 @@
     .more-button
       outline: none
       border: 1px solid $white
-      border-radius: 4px
       color: $white
-      font-weight: 200
       padding: 15px 40px
       font-size: 16px
       background: transparent
@@ -65,10 +48,17 @@
       display: inline-flex
       justify-content: center
       align-items: center
+      font-family: $font-family-light
+      border-radius: 2px
+      transition: all 150ms ease-out
+
+      +mobile
+        font-size: 14px
 
       &:hover
-        background: $white
+        background: rgba($white, .85)
         color: $blue
 
       i
         margin-right: 10px
+        font-size: 20px
