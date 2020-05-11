@@ -1,0 +1,53 @@
+@charset 'utf-8'
+
+$fa-font-path: "/assets/fonts/fa"
+
+@import '~@fortawesome/fontawesome-free/scss/fontawesome'
+@import '~@fortawesome/fontawesome-free/scss/brands'
+@import '~bulma/sass/base/minireset'
+@import '~bulma/sass/utilities/all'
+@import '~bulma/sass/elements/container'
+@import '~bulma/sass/grid/columns'
+@import '~bulma/sass/layout/hero'
+@import 'animations'
+@import 'typography'
+@import 'hero'
+
+html, body
+  background: linear-gradient(0deg,#0a6bbe 15%,#1c1656 93%)
+  width: 100%
+  font-family: $font-family-regular
+  color: $white
+  overflow-x: hidden
+  text-rendering: optimizeLegibility
+  text-size-adjust: 100%
+  -moz-osx-font-smoothing: grayscale
+  -webkit-font-smoothing: antialiased
+  -webkit-overflow-scrolling: touch
+
+  .stars, .comets
+    position: absolute
+    top: 0
+    bottom: 0
+    left: 0
+    right: 0
+
+  .comets
+
+    .comet
+      width: 40px
+      height: 40px
+      top: -70px
+      left: -70px
+      content: ''
+      display: block
+      position: absolute
+
+  .bottom
+    position: absolute
+    user-select: none
+    bottom: 0
+    left: 0
+    right: 0
+    max-width: none
+    z-index: 1

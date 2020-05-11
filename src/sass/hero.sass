@@ -1,0 +1,76 @@
+$purple: #1c1656
+
+.hero-body
+  z-index: 2
+
+  h1
+    font-size: 46px
+    line-height: 50px
+    font-family: $font-family-bold
+
+    +mobile
+      font-size: 28px
+
+  h2
+    font-size: 30px
+    line-height: 40px
+    font-family: $font-family-medium
+
+    +mobile
+      font-size: 22px
+      line-height: 26px
+
+  h3
+    font-size: 22px
+    line-height: 36px
+    font-family: $font-family-regular
+
+    +mobile
+      font-size: 18px
+      line-height: 26px
+
+  .stars, .comets
+    position: absolute
+    top: 0
+    bottom: 0
+    left: 0
+    right: 0
+
+  .more-buttons
+    width: 100%
+    display: flex
+    align-items: center
+    margin: 40px 0 150px 0
+
+    +mobile
+      justify-content: center
+
+    .more-button
+      outline: none
+      border: 1px solid $white
+      color: $white
+      padding: 15px 40px
+      font-size: 16px
+      background: transparent
+      margin-right: 15px
+      cursor: pointer
+      text-decoration: none
+      display: inline-flex
+      justify-content: center
+      align-items: center
+      font-family: $font-family-regular
+      border-radius: 2px
+      transition: all 150ms ease-out
+
+      +mobile
+        font-size: 14px
+        padding: 15px 12px
+        font-family: $font-family-medium
+
+      &:hover
+        background: rgba($white, .85)
+        color: $purple
+
+      i
+        margin-right: 10px
+        font-size: 20px

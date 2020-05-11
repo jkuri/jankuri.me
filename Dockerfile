@@ -1,8 +1,8 @@
-FROM node:12-alpine as build
+FROM node:14-alpine as build
 
 WORKDIR /app
 COPY . /app/
-RUN npm install && npm run build:ssr
+RUN apk add --no-cache yarn && yarn install && yarn build:all
 
 FROM alpine:3.8
 
