@@ -1,11 +1,14 @@
 {
-  "$schema": "./node_modules/@angular-devkit/core/src/workspace/workspace-schema.json",
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
     "jankuri.com": {
-      "root": "",
       "projectType": "application",
+      "schematics": {},
+      "root": "",
+      "sourceRoot": "src",
+      "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -13,24 +16,11 @@
             "outputPath": "dist/browser",
             "index": "src/index.html",
             "main": "src/main.ts",
-            "tsConfig": "src/tsconfig.app.json",
             "polyfills": "src/polyfills.ts",
+            "tsConfig": "tsconfig.app.json",
             "assets": [
-              {
-                "glob": "**/*",
-                "input": "src/assets",
-                "output": "/assets"
-              },
-              {
-                "glob": "favicon.ico",
-                "input": "src",
-                "output": "/"
-              },
-              {
-                "glob": "**/*",
-                "input": "node_modules/@fortawesome/fontawesome-free/webfonts",
-                "output": "/assets/fonts/fa"
-              }
+              "src/favicon.ico",
+              "src/assets"
             ],
             "styles": [
               "src/styles/app.sass"
@@ -39,6 +29,12 @@
           },
           "configurations": {
             "production": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
@@ -48,13 +44,18 @@
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
-              "fileReplacements": [
+              "budgets": [
                 {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
                 }
-              ],
-              "index": "src/index.prod.html"
+              ]
             }
           }
         },
@@ -79,115 +80,93 @@
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "main": "src/test.ts",
-            "karmaConfig": "./karma.conf.js",
             "polyfills": "src/polyfills.ts",
-            "tsConfig": "src/tsconfig.spec.json",
-            "scripts": [],
+            "tsConfig": "tsconfig.spec.json",
+            "karmaConfig": "karma.conf.js",
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
             "styles": [
               "src/styles/app.sass"
             ],
-            "assets": [
-              {
-                "glob": "**/*",
-                "input": "src/assets",
-                "output": "/assets"
-              },
-              {
-                "glob": "favicon.ico",
-                "input": "src",
-                "output": "/"
-              },
-              {
-                "glob": "**/*",
-                "input": "node_modules/@fortawesome/fontawesome-free/webfonts",
-                "output": "/assets/fonts/fa"
-              }
-            ]
+            "scripts": []
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "src/tsconfig.app.json"
+              "tsconfig.app.json",
+              "tsconfig.spec.json",
+              "e2e/tsconfig.json"
             ],
             "exclude": [
               "**/node_modules/**"
             ]
           }
         },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "e2e/protractor.conf.js",
+            "devServerTarget": "jankuri.com:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "jankuri.com:serve:production"
+            }
+          }
+        },
         "server": {
           "builder": "@angular-devkit/build-angular:server",
           "options": {
             "outputPath": "dist/server",
-            "main": "src/main.server.ts",
-            "tsConfig": "src/tsconfig.server.json"
+            "main": "server.ts",
+            "tsConfig": "tsconfig.server.json"
           },
           "configurations": {
             "production": {
+              "outputHashing": "media",
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
                   "with": "src/environments/environment.prod.ts"
                 }
-              ]
+              ],
+              "sourceMap": false,
+              "optimization": true
             }
           }
-        }
-      }
-    },
-    "jankuri.com-e2e": {
-      "root": "",
-      "projectType": "application",
-      "cli": {},
-      "schematics": {},
-      "architect": {
-        "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
+        },
+        "serve-ssr": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
           "options": {
-            "protractorConfig": "./protractor.conf.js",
-            "devServerTarget": "jankuri.com:serve"
+            "browserTarget": "jankuri.com:build",
+            "serverTarget": "jankuri.com:server"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "jankuri.com:build:production",
+              "serverTarget": "jankuri.com:server:production"
+            }
           }
         },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+        "prerender": {
+          "builder": "@nguniversal/builders:prerender",
           "options": {
-            "tsConfig": [],
-            "exclude": [
-              "**/node_modules/**"
+            "browserTarget": "jankuri.com:build:production",
+            "serverTarget": "jankuri.com:server:production",
+            "routes": [
+              "/"
             ]
+          },
+          "configurations": {
+            "production": {}
           }
         }
       }
     }
   },
-  "cli": {},
-  "schematics": {
-    "@schematics/angular:class": {
-      "spec": false
-    },
-    "@schematics/angular:component": {
-      "spec": false,
-      "inlineStyle": true,
-      "inlineTemplate": true,
-      "prefix": "app",
-      "styleext": "css"
-    },
-    "@schematics/angular:directive": {
-      "spec": false,
-      "prefix": "app"
-    },
-    "@schematics/angular:guard": {
-      "spec": false
-    },
-    "@schematics/angular:module": {
-      "spec": false
-    },
-    "@schematics/angular:pipe": {
-      "spec": false
-    },
-    "@schematics/angular:service": {
-      "spec": false
-    }
-  }
+  "defaultProject": "jankuri.com"
 }
