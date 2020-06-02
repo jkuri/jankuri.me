@@ -1,10 +1,11 @@
-FROM node:12-alpine as build
+FROM node:14-alpine as build
 
+ENV PORT=4050
 WORKDIR /app
 COPY . /app/
 RUN npm install && npm run build:ssr
 
-FROM alpine:3.8
+FROM alpine:latest
 
 LABEL AUTHOR="Jan Kuri" AUTHOR_EMAIL="jkuri88@gmail.com"
 

@@ -1,10 +1,11 @@
 import { Component, OnInit, ElementRef, HostListener, PLATFORM_ID, Inject, OnDestroy } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-import { interval, Subscription } from 'rxjs';
+import { interval, Subscription, Subject } from 'rxjs';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { select, Selection, BaseType } from 'd3-selection';
 import { scaleLinear } from 'd3-scale';
 import { easeLinear } from 'd3-ease';
-import 'd3-transition';
+import { transition } from 'd3-transition';
 
 @Component({
   selector: 'app-home',
@@ -21,8 +22,9 @@ export class HomeComponent implements OnInit, OnDestroy {
   comet: Selection<BaseType, unknown, HTMLElement, any>;
   sub: Subscription = new Subscription();
   intervalMs = 5000;
+  resize = new Subject();
 
-  constructor(private elementRef: ElementRef, @Inject(PLATFORM_ID) private platform_id) { }
+  constructor(private elementRef: ElementRef, @Inject(PLATFORM_ID) private platform_id: Object) { }
 
   ngOnInit(): void {
     if (!this.isBrowser) {
@@ -34,6 +36,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.x = 0;
     this.animation();
     this.sub.add(this.cometTwinkle());
+    this.sub.add(this.resizeEvent());
   }
 
   ngOnDestroy(): void {
@@ -50,12 +53,21 @@ export class HomeComponent implements OnInit, OnDestroy {
       });
   }
 
+  private resizeEvent(): Subscription {
+    return this.resize
+      .pipe(
+        debounceTime(400),
+        distinctUntilChanged()
+      )
+      .subscribe(() => this.render());
+  }
+
   private animation = () => {
+    const t = transition().duration(this.intervalMs).ease(easeLinear);
     this.x = (this.x < this.n - 1) ? this.x += 1 : 0;
-    this.g.selectAll('circle')
-      .transition()
-      .duration(this.intervalMs)
-      .ease(easeLinear)
+    const that = this;
+    this.g.selectAll('.star')
+      .transition(t)
       .attr('cx', (_: any, i: number) => {
         const move = ((this.w / this.n) * i) + (this.w / this.n) * this.x;
         return (move > this.w) ? move - this.w : move;
@@ -73,20 +85,15 @@ export class HomeComponent implements OnInit, OnDestroy {
     select(this.bgElement).select('svg').remove();
 
     const svg = select(this.bgElement).append('svg').attr('width', this.w).attr('height', this.h);
-    let g = svg.append('g');
-
-    let data = [...new Array(this.n)].map(() => this.getRandomInt(0, 10));
+    const data = [...new Array(this.n)].map(() => this.getRandomInt(0, 10));
     const x = scaleLinear().domain([0, data.length - 1]).range([0, this.w]);
     const y = scaleLinear().domain([0, 150]).range([this.h, 0]);
 
     this.g = svg.append('g');
     this.comet = select('.comet');
-
     this.generateStars();
 
-    g = svg.append('g');
-
-    g.selectAll('circle')
+    svg.append('g').selectAll('circle')
       .data(data)
       .enter()
       .append('circle')
@@ -96,8 +103,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       .attr('fill', '#ffffff')
       .attr('stroke', 'none');
 
-    g = svg.append('g');
-    g.append('image')
+    svg.append('g').append('image')
       .attr('xlink:href', '/assets/images/travel.svg')
       .attr('width', this.w / 5)
       .attr('height', this.w / 5)
@@ -106,14 +112,14 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   private generateStars(): void {
-    this.g.selectAll('circle').remove();
+    this.g.selectAll('.star').remove();
     [...new Array(this.n)]
       .forEach(() => {
         this.g.append('circle')
           .attr('class', 'star')
           .attr('r', `0.${this.getRandomInt(60, 99)}`)
           .attr('fill', '#fff')
-          .attr('cx', Math.random() * this.w)
+          .attr('cx', (_: any, i: number) => (this.w / this.n) * i)
           .attr('cy', Math.random() * this.h)
           .style('animation', `${this.getRandomInt(1000, 10000)}ms ease-in-out 0s infinite normal none twinkle`)
       });
@@ -128,6 +134,6 @@ export class HomeComponent implements OnInit, OnDestroy {
       return;
     }
 
-    this.render();
+    this.resize.next(e);
   }
 }
