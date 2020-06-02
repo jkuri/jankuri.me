@@ -1,8 +1,15 @@
 {
   "name": "jankuri.com",
-  "version": "1.0.0",
+  "version": "3.0.0",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jkuri/jankuri.com.git"
+  },
+  "contributors": [
+    "Jan Kuri <jkuri88@gmail.com>"
+  ],
   "private": true,
-  "description": "Example project from an angular.io guide.",
   "scripts": {
     "ng": "ng",
     "build": "ng build",
@@ -15,9 +22,6 @@
     "serve:ssr": "node dist/server/main.js",
     "prerender": "ng run jankuri.com:prerender"
   },
-  "keywords": [],
-  "author": "",
-  "license": "MIT",
   "dependencies": {
     "@angular/animations": "~9.1.4",
     "@angular/common": "~9.1.4",
@@ -30,7 +34,6 @@
     "@angular/router": "~9.1.4",
     "@angular/upgrade": "~9.1.4",
     "@nguniversal/express-engine": "~9.0.1",
-    "angular-in-memory-web-api": "~0.11.0",
     "express": "^4.15.2",
     "rxjs": "~6.5.4",
     "zone.js": "~0.10.3"
@@ -61,6 +64,5 @@
     "tslib": "^1.10.0",
     "tslint": "~6.1.0",
     "typescript": "~3.8.3"
-  },
-  "repository": {}
+  }
 }

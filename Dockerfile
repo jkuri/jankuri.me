@@ -1,14 +1,15 @@
-FROM node:14-alpine as build
+FROM node:12-alpine as build
 
 ENV PORT=4050
 WORKDIR /app
 COPY . /app/
-RUN npm install && npm run build:ssr
+RUN yarn install && yarn build:ssr
 
 FROM alpine:latest
 
 LABEL AUTHOR="Jan Kuri" AUTHOR_EMAIL="jkuri88@gmail.com"
 
+ENV PORT=4050
 WORKDIR /app
 
 COPY --from=build /usr/local/bin/node /usr/bin
@@ -17,4 +18,4 @@ COPY --from=build /app/dist ./dist
 
 EXPOSE 4050
 
-CMD ["node", "/app/dist/server.js"]
+CMD ["node", "/app/dist/server/main.js"]
