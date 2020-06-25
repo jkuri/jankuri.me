@@ -1,5 +1,5 @@
 .hero-first
-  background: $background
+  background: transparent
   position: relative
 
   .hero-first-bg
@@ -11,57 +11,95 @@
     width: 100%
     height: 100%
 
-  h1
-    color: $white
-    font-size: 46px
-    line-height: 50px
-    font-weight: $weight-light
+  .hero-foot
+    padding-bottom: 30px
 
-    +mobile
-      font-size: 28px
+    .container
+      text-align: center
 
-  h2
-    color: $white
-    font-size: 22px
-    line-height: 36px
-    font-weight: $weight-thin
+      a
+        text-decoration: none
 
-    +mobile
-      font-size: 18px
+        i
+          font-size: 22px
+          margin: 0 15px
+          color: $white
 
-  .more-buttons
-    width: 100%
-    display: flex
-    align-items: center
-    margin: 40px 0 150px 0
+  .hero-body
 
-    .more-button
-      outline: none
-      border: 1px solid $white
-      color: $white
-      padding: 15px 40px
-      font-size: 16px
-      background: transparent
-      margin-right: 15px
-      cursor: pointer
-      text-decoration: none
-      display: inline-flex
-      justify-content: center
-      align-items: center
-      font-weight: $weight-thin
-      border-radius: 2px
-      transition: all 150ms ease-out
+    .container
+      text-align: center
 
-      +mobile
-        font-size: 14px
+      h1, h2
+        display: block
+        width: 100%
 
-      &:hover
-        background: rgba($white, .85)
-        color: $purple
+      h1
+        color: $white
+        font-size: 50px
+        font-weight: $weight-medium
+        margin-bottom: 20px
 
-      i
-        margin-right: 10px
-        font-size: 20px
+        +mobile
+          font-size: 28px
+
+      h2
+        color: $white
+        font-size: 22px
+        line-height: 36px
+        font-weight: $weight-medium
+
+        +mobile
+          font-size: 18px
+
+      p
+        color: $white
+        font-size: 16px
+        line-height: 20px
+        font-weight: $weight-regular
+        margin: 15px 0
+
+        a
+          color: $white
+          text-decoration: underline
+
+        b
+          font-weight: $weight-black
+
+      .more-buttons
+        width: 100%
+        display: flex
+        align-items: center
+        justify-content: center
+        margin: 70px 0 50px
+
+        .more-button
+          outline: none
+          border: 1px solid $white
+          color: $white
+          padding: 15px 40px
+          font-size: 16px
+          background: rgba($white, .05)
+          margin-right: 15px
+          cursor: pointer
+          text-decoration: none
+          display: inline-flex
+          justify-content: center
+          align-items: center
+          font-weight: $weight-regular
+          border-radius: 4px
+          transition: all 150ms ease-out
+
+          +mobile
+            font-size: 14px
+
+          &:hover
+            background: rgba($white, .85)
+            color: $background
+
+          i
+            margin-right: 10px
+            font-size: 20px
 
   .stars, .comets
     position: absolute

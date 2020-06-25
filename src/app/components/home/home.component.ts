@@ -23,8 +23,9 @@ export class HomeComponent implements OnInit, OnDestroy {
   sub: Subscription = new Subscription();
   intervalMs = 5000;
   resize = new Subject();
+  init: boolean;
 
-  constructor(private elementRef: ElementRef, @Inject(PLATFORM_ID) private platform_id: Object) { }
+  constructor(private elementRef: ElementRef, @Inject(PLATFORM_ID) private platform_id: Object) {}
 
   ngOnInit(): void {
     if (!this.isBrowser) {
@@ -44,85 +45,61 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   private cometTwinkle(): Subscription {
-    return interval(this.intervalMs)
-      .subscribe(() => {
-        this.comet
-          .style('left', `${this.getRandomInt(10, 90)}%`)
-          .style('top', `${this.getRandomInt(10, this.h / 2)}px`)
-          .style('animation', `cometShorter ${this.intervalMs}ms cubic-bezier(0,.53,.35,.99) 0s infinite`);
-      });
+    return interval(this.intervalMs).subscribe(() => {
+      this.comet
+        .style('left', `${this.getRandomInt(10, 90)}%`)
+        .style('top', `${this.getRandomInt(10, this.h)}px`)
+        .style('animation', `cometShorter ${this.intervalMs}ms cubic-bezier(0,.53,.35,.99) 0s infinite`);
+    });
   }
 
   private resizeEvent(): Subscription {
-    return this.resize
-      .pipe(
-        debounceTime(400),
-        distinctUntilChanged()
-      )
-      .subscribe(() => this.render());
+    return this.resize.pipe(debounceTime(400), distinctUntilChanged()).subscribe(() => this.render());
   }
 
   private animation = () => {
-    const t = transition().duration(this.intervalMs).ease(easeLinear);
-    this.x = (this.x < this.n - 1) ? this.x += 1 : 0;
-    const that = this;
-    this.g.selectAll('.star')
+    const t = transition()
+      .duration(this.init ? this.intervalMs : 0)
+      .ease(easeLinear);
+    this.x = this.x < this.n - 1 ? (this.x += 1) : 0;
+    this.g
+      .selectAll('.star')
       .transition(t)
       .attr('cx', (_: any, i: number) => {
-        const move = ((this.w / this.n) * i) + (this.w / this.n) * this.x;
-        return (move > this.w) ? move - this.w : move;
+        const move = (this.w / this.n) * i + (this.w / this.n) * this.x;
+        return move > this.w ? move - this.w : move;
       })
       .on('end', (_: number, size: number) => {
         if (size === this.n - 1) {
           this.animation();
+          this.init = true;
         }
       });
-  }
+  };
 
   private render(): void {
+    this.init = false;
     this.w = this.bgElement.clientWidth;
     this.h = this.bgElement.clientHeight;
     select(this.bgElement).select('svg').remove();
-
     const svg = select(this.bgElement).append('svg').attr('width', this.w).attr('height', this.h);
-    const data = [...new Array(this.n)].map(() => this.getRandomInt(0, 10));
-    const x = scaleLinear().domain([0, data.length - 1]).range([0, this.w]);
-    const y = scaleLinear().domain([0, 150]).range([this.h, 0]);
-
     this.g = svg.append('g');
     this.comet = select('.comet');
     this.generateStars();
-
-    svg.append('g').selectAll('circle')
-      .data(data)
-      .enter()
-      .append('circle')
-      .attr('r', (d: any, i: number) => 185)
-      .attr('cx', (d: any, i: number) => x(i))
-      .attr('cy', (d: any, i: number) => y(d))
-      .attr('fill', '#ffffff')
-      .attr('stroke', 'none');
-
-    svg.append('g').append('image')
-      .attr('xlink:href', '/assets/images/travel.svg')
-      .attr('width', this.w / 5)
-      .attr('height', this.w / 5)
-      .attr('x', this.w - (this.w / 6 + this.w / 5))
-      .attr('y', this.w < 500 ? 50 : this.h / 4);
   }
 
   private generateStars(): void {
     this.g.selectAll('.star').remove();
-    [...new Array(this.n)]
-      .forEach(() => {
-        this.g.append('circle')
-          .attr('class', 'star')
-          .attr('r', `0.${this.getRandomInt(60, 99)}`)
-          .attr('fill', '#fff')
-          .attr('cx', (_: any, i: number) => (this.w / this.n) * i)
-          .attr('cy', Math.random() * this.h)
-          .style('animation', `${this.getRandomInt(1000, 10000)}ms ease-in-out 0s infinite normal none twinkle`)
-      });
+    [...new Array(this.n)].forEach(() => {
+      this.g
+        .append('circle')
+        .attr('class', 'star')
+        .attr('r', `0.${this.getRandomInt(60, 99)}`)
+        .attr('fill', '#fff')
+        .attr('cx', (_: any, i: number) => (this.w / this.n) * i)
+        .attr('cy', Math.random() * this.h)
+        .style('animation', `${this.getRandomInt(1000, 10000)}ms ease-in-out 0s infinite normal none twinkle`);
+    });
   }
 
   private getRandomInt(min: number, max: number): number {

@@ -16,6 +16,23 @@
 @import 'hero-landing'
 
 html, body
+  width: 100%
   height: 100%
   background: $background
-  font-family: "Gilmer-Light", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif
+  background-image: radial-gradient(circle, #111a22, #13171e, #13151a, #121215, #101010)
+  font-family: $font-family
+  color: $text-primary
+  font-size: 14px
+  -webkit-font-smoothing: antialiased
+  -webkit-tap-highlight-color: transparent
+  -moz-osx-font-smoothing: grayscale
+  -webkit-font-smoothing: antialiased
+  font-smoothing: antialiased
+
+::selection
+  background: $background
+  color: $white
+
+::-moz-selection
+  background: $background
+  color: $white
