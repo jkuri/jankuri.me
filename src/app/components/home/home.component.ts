@@ -48,7 +48,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     return interval(this.intervalMs).subscribe(() => {
       this.comet
         .style('left', `${this.getRandomInt(10, 90)}%`)
-        .style('top', `${this.getRandomInt(10, this.h)}px`)
+        .style('top', `${this.getRandomInt(10, this.h / 2)}px`)
         .style('animation', `cometShorter ${this.intervalMs}ms cubic-bezier(0,.53,.35,.99) 0s infinite`);
     });
   }
