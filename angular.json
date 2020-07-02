@@ -27,9 +27,10 @@
                 "output": "/assets/fonts/fa"
               }
             ],
-            "styles": [
-              "src/styles/app.sass"
-            ],
+            "styles": ["src/styles/app.sass"],
+            "stylePreprocessorOptions": {
+              "includePaths": ["src/styles"]
+            },
             "scripts": []
           },
           "configurations": {
@@ -98,23 +99,18 @@
                 "output": "/assets/fonts/fa"
               }
             ],
-            "styles": [
-              "src/styles/app.sass"
-            ],
+            "styles": ["src/styles/app.sass"],
+            "stylePreprocessorOptions": {
+              "includePaths": ["src/styles"]
+            },
             "scripts": []
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "tsconfig.app.json",
-              "tsconfig.spec.json",
-              "e2e/tsconfig.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "tsConfig": ["tsconfig.app.json", "tsconfig.spec.json", "e2e/tsconfig.json"],
+            "exclude": ["**/node_modules/**"]
           }
         },
         "e2e": {
@@ -168,9 +164,7 @@
           "options": {
             "browserTarget": "jankuri.com:build:production",
             "serverTarget": "jankuri.com:server:production",
-            "routes": [
-              "/"
-            ]
+            "routes": ["/"]
           },
           "configurations": {
             "production": {}

@@ -1,4 +1,4 @@
-export interface ResumeData {
+export interface Resume {
   avatar: string;
   name: string;
   title: string;
@@ -58,7 +58,7 @@ export interface Project {
   tags: string[];
 }
 
-export const resume: ResumeData = {
+export const resume: Resume = {
   avatar: 'https://avatars0.githubusercontent.com/u/1796022?s=400&u=18fb22883024fa7e517f2c643f8235e5144b80a9&v=4',
   name: 'Jan Kuri',
   title: 'Software Developer',
@@ -146,11 +146,19 @@ export const resume: ResumeData = {
       title: 'Junior Software Developer',
       company: 'Globtel d.o.o.',
       type: 'Internship',
-      start: setDate(2009, 9),
-      end: setDate(2007, 11),
+      start: setDate(2007, 11),
+      end: setDate(2009, 9),
       description: ['Building user interfaces for alarm devices and various micro controllers.'].join(' '),
-      tags: ['Linux', 'PHP', 'jQuery', 'PostgreSQL', 'CSS'],
+      tags: ['Linux', 'FreeBSD', 'PHP', 'jQuery', 'PostgreSQL', 'CSS'],
       location: 'Remote / Maribor, Slovenia'
+    }
+  ],
+  education: [
+    {
+      title: 'Computer Engineer',
+      school: 'School of Electrical and Computer Engineering, Velenje',
+      start: setDate(2002, 9),
+      end: setDate(2006, 6)
     }
   ]
 };
@@ -158,6 +166,6 @@ export const resume: ResumeData = {
 function setDate(year: number, month: number): Date {
   const date = new Date(0);
   date.setHours(0, 0, 0, 0);
-  date.setFullYear(year, month);
+  date.setFullYear(year, month - 1);
   return date;
 }

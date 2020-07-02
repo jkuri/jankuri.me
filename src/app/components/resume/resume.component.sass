@@ -1,9 +1,13 @@
+@import 'typography'
+
 $white: #fff
 $black: #000
 
 $background: #fcfcfc
-$text-primary: #333
-$border-default: #EAEDF3
+$text-primary: #2E437F
+$text-secondary: #B4B9CC
+$border-default: #F0F1F5
+$green: #D7FFE0
 
 $blue-100: #ebf8ff
 $blue-200: #bee3f8
@@ -20,7 +24,167 @@ $blue-900: #2a4365
   background: $white
   border: 1px solid $border-default
   padding: 30px
+  font-family: $font-family-lato
+  color: $text-primary
 
-  .profile-img
-    height: 120px
-    border-radius: 50%
+  .left-content
+    display: block
+    width: 100%
+
+    .profile-img
+      display: block
+      height: 130px
+      border-radius: 50%
+      margin: 0 auto
+      margin-bottom: 20px
+
+    .name
+      display: block
+      font-size: 24px
+      font-weight: $weight-black
+      margin-bottom: 10px
+      text-align: center
+
+    .title
+      display: block
+      font-size: 16px
+      font-weight: $weight-regular
+      margin-bottom: 20px
+      text-align: center
+
+    .info-container
+      display: block
+      width: 100%
+      height: 100%
+
+    .info-item
+      border-bottom: 1px solid $border-default
+      width: 100%
+      height: 40px
+      display: flex
+      align-items: center
+      justify-content: flex-start
+      padding: 0 5px
+      font-family: $font-family
+
+      i
+        font-size: 13px
+        margin-right: 10px
+
+      span
+        font-size: 13px
+        font-weight: $weight-medium
+
+  .main-content
+
+    .main-section
+      display: block
+
+      &:not(:first-child)
+        margin-top: 50px
+
+    h1
+      display: block
+      font-size: 24px
+      font-weight: $weight-black
+      margin-bottom: 15px
+
+    p
+      display: block
+      text-align: left
+      font-weight: $weight-regular
+      margin-bottom: 20px
+      font-size: 15px
+
+    .work-experience-container
+
+      .work-experience-item
+        display: block
+        width: 100%
+        border-bottom: 1px solid $border-default
+        margin-bottom: 15px
+        padding-bottom: 10px
+
+        .work-experience-top
+          display: flex
+          width: 100%
+          align-items: center
+          justify-content: space-between
+
+          .title
+            font-size: 18px
+            font-weight: $weight-regular
+
+          .tag
+            background: $green
+            font-weight: $weight-bold
+            font-size: 13px
+            border-radius: 8px
+            padding: 5px 25px
+
+        .work-experience-info
+          display: flex
+          align-items: center
+          justify-content: space-between
+          margin: 5px 0 10px
+
+          .info, .duration-info
+            color: $text-secondary
+            font-size: 12px
+            font-weight: $weight-bold
+
+            i
+              font-size: 12px
+              margin-right: 8px
+
+            &.ml20
+              margin-left: 20px
+
+        .work-experience-description
+          font-size: 13px
+          padding: 5px 0
+
+  .languages-container
+
+    .language-item
+      width: 100%
+      border-bottom: 1px solid $border-default
+      padding: 15px 0
+      display: flex
+      align-items: center
+      justify-content: space-between
+
+      .title
+        font-size: 16px
+        font-weight: $weight-regular
+        margin-bottom: 5px
+
+      .knowledge
+        display: block
+        font-size: 14px
+        font-weight: $weight-regular
+
+  .education-container
+
+    .education-item
+      width: 100%
+      border-bottom: 1px solid $border-default
+      padding: 15px 0
+
+      .title
+        display: block
+        font-size: 18px
+        margin-bottom: 10px
+
+      .school-info
+        display: flex
+        align-items: center
+        justify-content: space-between
+
+        .edu-info, .duration-info
+          color: $text-secondary
+          font-size: 13px
+          font-weight: $weight-bold
+
+          i
+            margin-right: 5px
