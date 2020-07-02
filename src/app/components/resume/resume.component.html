@@ -23,6 +23,17 @@
                       <i class="fas fa-phone-square-alt"></i>
                       <span>{{ data.phone }}</span>
                     </div>
+                    <div class="info-container-icons">
+                      <a target="_blank" [href]="data.githubProfile">
+                        <i class="fab fa-github-square"></i>
+                      </a>
+                      <a target="_blank" [href]="data.linkedinProfile">
+                        <i class="fab fa-linkedin-in"></i>
+                      </a>
+                      <a target="_blank" [href]="data.npmProfile">
+                        <i class="fab fa-npm"></i>
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -68,6 +79,26 @@
                       <div class="language-item" *ngFor="let l of data.languages">
                         <span class="title">{{ l.title }}</span>
                         <span class="knowledge">{{ l.proficiency }}</span>
+                      </div>
+                    </div>
+                  </section>
+                  <section class="main-section">
+                    <h1>Projects</h1>
+                    <div class="projects-container">
+                      <div class="project-item" *ngFor="let p of data.projects">
+                        <div class="project-item-top">
+                          <span class="title">{{ p.title }}</span>
+                          <a class="url" target="_blank" [href]="p.url">
+                            <i class="fas fa-link"></i>
+                            <span>{{ p.url }}</span>
+                          </a>
+                        </div>
+                        <span class="description">
+                          <span>{{ p.description }}</span>
+                        </span>
+                        <span class="tags">
+                          <span class="tag" *ngFor="let t of p.tags">{{ t }}</span>
+                        </span>
                       </div>
                     </div>
                   </section>

@@ -254,7 +254,7 @@ export const resume: Resume = {
     },
     {
       title: 'Windows 98 Web Application',
-      url: 'https://github.com/jkuri/macstats',
+      url: 'https://github.com/jkuri/windows98',
       description: ['Windows 98 nostalgic OS from my childhood wrapped into web application'].join(' '),
       tags: ['Angular', 'SASS', 'TypeScript']
     }

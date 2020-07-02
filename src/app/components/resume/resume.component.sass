@@ -6,6 +6,7 @@ $black: #000
 $background: #fcfcfc
 $text-primary: #2E437F
 $text-secondary: #B4B9CC
+$text-green: #00e636
 $border-default: #F0F1F5
 $green: #D7FFE0
 
@@ -57,6 +58,10 @@ $blue-900: #2a4365
       width: 100%
       height: 100%
 
+    .info-divider
+      display: block
+      margin: 20px 0
+
     .info-item
       border-bottom: 1px solid $border-default
       width: 100%
@@ -74,6 +79,20 @@ $blue-900: #2a4365
       span
         font-size: 13px
         font-weight: $weight-medium
+        color: $text-primary
+        text-decoration: none
+
+    .info-container-icons
+      display: flex
+      align-items: center
+      padding: 10px
+      border-bottom: 1px solid $border-default
+
+      i
+        font-size: 18px
+        margin-right: 20px
+        color: $text-primary
+
 
   .main-content
 
@@ -188,3 +207,50 @@ $blue-900: #2a4365
 
           i
             margin-right: 5px
+
+  .projects-container
+
+    .project-item
+      width: 100%
+      border-bottom: 1px solid $border-default
+      padding: 20px 0
+
+      .project-item-top
+        display: block
+        margin-bottom: 10px
+
+        .title
+          display: block
+          font-size: 16px
+          margin-bottom: 10px
+          font-weight: $weight-bold
+
+        .url
+          color: $text-secondary
+          text-decoration: none
+          font-size: 12px
+          font-weight: $weight-bold
+
+          &:hover
+            color: $text-primary
+            text-decoration: underline
+
+          i
+            margin-right: 5px
+
+      .description
+        display: block
+        color: $text-primary
+        font-size: 14px
+        font-weight: $weight-bold
+        margin-bottom: 20px
+
+      .tags
+        display: block
+
+        .tag
+          background: rgba($text-primary, .8)
+          color: $white
+          padding: 5px 10px
+          border-radius: 4px
+          margin-right: 10px
