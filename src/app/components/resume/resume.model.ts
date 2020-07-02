@@ -113,9 +113,9 @@ export const resume: Resume = {
       type: 'Freelance',
       start: setDate(2016, 8),
       end: setDate(2017, 10),
-      description: ['Working on initial Angular CLI release, debugging and testing code, adding new commands.'].join(
-        ' '
-      ),
+      description: [
+        'Working on initial Angular CLI release, debugging and testing code, implementing new commands.'
+      ].join(' '),
       tags: ['Angular', 'CLI', 'Node.JS', 'TypeScript', 'Mocha', 'Chai', 'CI'],
       location: 'Remote / Salt Lake City, Utah'
     },
