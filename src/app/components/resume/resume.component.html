@@ -23,15 +23,22 @@
                       <i class="fas fa-phone-square-alt"></i>
                       <span>{{ data.phone }}</span>
                     </div>
-                    <div class="info-container-icons">
+                    <div class="info-item">
                       <a target="_blank" [href]="data.githubProfile">
                         <i class="fab fa-github-square"></i>
+                        <span>{{ data.githubProfile }}</span>
                       </a>
+                    </div>
+                    <div class="info-item">
                       <a target="_blank" [href]="data.linkedinProfile">
                         <i class="fab fa-linkedin-in"></i>
+                        <span>{{ data.linkedinProfile | truncate:[22, '...'] }}</span>
                       </a>
+                    </div>
+                    <div class="info-item">
                       <a target="_blank" [href]="data.npmProfile">
                         <i class="fab fa-npm"></i>
+                        <span>{{ data.npmProfile | truncate:[22, '...'] }}</span>
                       </a>
                     </div>
                   </div>
