@@ -8,16 +8,6 @@ $text-green: #00e636
 $border-default: #F0F1F5
 $green: #D7FFE0
 
-$blue-100: #ebf8ff
-$blue-200: #bee3f8
-$blue-300: #90cdf4
-$blue-400: #63b3ed
-$blue-500: #4299e1
-$blue-600: #3182ce
-$blue-700: #2b6cb0
-$blue-800: #2c5282
-$blue-900: #2a4365
-
 .box
   border-radius: 4px
   background: $white
@@ -83,13 +73,16 @@ $blue-900: #2a4365
     .info-container-icons
       display: flex
       align-items: center
-      padding: 10px
+      padding: 10px 0
       border-bottom: 1px solid $border-default
 
       i
         font-size: 18px
         margin-right: 20px
         color: $text-primary
+
+      +mobile
+        justify-content: space-between
 
 
   .main-content
@@ -141,6 +134,9 @@ $blue-900: #2a4365
             font-size: 13px
             border-radius: 8px
             padding: 5px 25px
+
+            +mobile
+              padding: 5px 10px
 
         .work-experience-info
           display: flex
@@ -265,8 +261,9 @@ $blue-900: #2a4365
         display: block
 
         .tag
+          display: inline-block
           background: rgba($text-primary, .8)
           color: $white
           padding: 5px 10px
           border-radius: 4px
-          margin-right: 10px
+          margin: 0 5px 5px 0
