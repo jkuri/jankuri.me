@@ -1,0 +1,22 @@
+.tooltip-container
+  min-width: 80px
+  padding: 6px 8px
+  background: $white
+  color: $black
+  display: inline-flex
+  align-items: center
+  justify-content: center
+  border-radius: 3px
+  font-weight: $weight-medium
+  position: relative
+  z-index: 20
+
+  &::after
+    content: ''
+    position: absolute
+    width: 10px
+    height: 10px
+    transform: rotate(-45deg)
+    background: $white
+    top: calc(100% - 5px)
+    left: calc(50% - 5px)
