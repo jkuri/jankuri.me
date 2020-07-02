@@ -53,7 +53,7 @@ export interface Education {
 
 export interface Project {
   title: string;
-  url?: string;
+  url: string;
   description: string;
   tags: string[];
 }
@@ -159,6 +159,104 @@ export const resume: Resume = {
       school: 'School of Electrical and Computer Engineering, Velenje',
       start: setDate(2002, 9),
       end: setDate(2006, 6)
+    }
+  ],
+  projects: [
+    {
+      title: 'Abstruse CI',
+      url: 'https://github.com/bleenco/abstruse',
+      description: ['Continuous Integration platform build with Node.JS and Docker'].join(' '),
+      tags: ['TypeScript', 'Angular', 'RxJS', 'Node.JS', 'Docker']
+    },
+    {
+      title: 'bterm',
+      url: 'https://github.com/bleenco/bterm',
+      description: ['Cross-platform terminal emulator built with web technologies'].join(' '),
+      tags: ['TypeScript', 'Angular', 'RxJS', 'Node.JS', 'Electron']
+    },
+    {
+      title: 'ngx-uploader',
+      url: 'https://github.com/bleenco/ngx-uploader',
+      description: ['Angular file uploader'].join(' '),
+      tags: ['TypeScript', 'Angular', 'RxJS']
+    },
+    {
+      title: 'ng2-datepicker',
+      url: 'https://github.com/bleenco/ng2-datepicker',
+      description: ['Angular datepicker component'].join(' '),
+      tags: ['TypeScript', 'Angular', 'date-fns']
+    },
+    {
+      title: 'bproxy',
+      url: 'https://github.com/bleenco/bproxy',
+      description: ['High-performance minimal HTTP reverse proxy'].join(' '),
+      tags: ['C', 'libuv']
+    },
+    {
+      title: 'binfs',
+      url: 'https://github.com/bleenco/binfs',
+      description: ['Library for embedding binary or text files into C++ programs'].join(' '),
+      tags: ['C++']
+    },
+    {
+      title: 'morose',
+      url: 'https://github.com/bleenco/morose',
+      description: ['Private npm registry and proxy server for npmjs.org'].join(' '),
+      tags: ['Node.JS', 'TypeScript', 'Angular']
+    },
+    {
+      title: 'ngx-slimscroll',
+      url: 'https://github.com/jkuri/ngx-slimscroll',
+      description: ['Angular customizable scrollbar directive'].join(' '),
+      tags: ['Angular', 'TypeScript', 'RxJS']
+    },
+    {
+      title: 'd3-car-dashboard',
+      url: 'https://github.com/jkuri/d3-car-dashboard',
+      description: ['Experiment dataviz with D3 and React'].join(' '),
+      tags: ['React', 'TypeScript', 'D3', 'RxJS']
+    },
+    {
+      title: 'ngx-graph',
+      url: 'https://github.com/jkuri/ngx-graph',
+      description: ['Reusable Angular components for visualizating data'].join(' '),
+      tags: ['Angular', 'TypeScript', 'D3']
+    },
+    {
+      title: 'bore',
+      url: 'https://github.com/jkuri/bore',
+      description: ['Reverse HTTP proxy tunnel via secure SSH connections'].join(' '),
+      tags: ['Go', 'Angular']
+    },
+    {
+      title: 'OpenCV FFMpeg RTMP Stream',
+      url: 'https://github.com/jkuri/opencv-ffmpeg-rtmp-stream',
+      description: ['OpenCV FFMpeg Live Video Stream over RTMP protocol'].join(' '),
+      tags: ['C++', 'OpenCV', 'FFMpeg']
+    },
+    {
+      title: 'FFMpeg Webcam RTMP Stream',
+      url: 'https://github.com/jkuri/ffmpeg-webcam-rtmp-stream',
+      description: ['Cross-platform webcam capture streaming via RTMP or saving into video file'].join(' '),
+      tags: ['C', 'FFMpeg']
+    },
+    {
+      title: 'Alpine Xfce4',
+      url: 'https://github.com/jkuri/alpine-xfce4',
+      description: ['Alpine Linux with Xfce4 and VNC Server'].join(' '),
+      tags: ['Docker', 'Linux', 'SSH']
+    },
+    {
+      title: 'macstats',
+      url: 'https://github.com/jkuri/macstats',
+      description: ['Mac OS X Statistics - Battery, Fans, CPU'].join(' '),
+      tags: ['macos', 'Node.JS', 'C++', 'TypeScript']
+    },
+    {
+      title: 'Windows 98 Web Application',
+      url: 'https://github.com/jkuri/macstats',
+      description: ['Windows 98 nostalgic OS from my childhood wrapped into web application'].join(' '),
+      tags: ['Angular', 'SASS', 'TypeScript']
     }
   ]
 };
