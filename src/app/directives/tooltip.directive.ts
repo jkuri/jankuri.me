@@ -43,11 +43,15 @@ export class TooltipDirective implements OnChanges, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.destroy();
+    if (this.isBrowser) {
+      this.destroy();
+    }
   }
 
   setup(): void {
-    this.initTooltip();
+    if (this.isBrowser) {
+      this.initTooltip();
+    }
   }
 
   private initTooltip(): void {
