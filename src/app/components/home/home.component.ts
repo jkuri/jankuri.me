@@ -3,7 +3,6 @@ import { isPlatformBrowser } from '@angular/common';
 import { interval, Subscription, Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { select, Selection, BaseType } from 'd3-selection';
-import { scaleLinear } from 'd3-scale';
 import { easeLinear } from 'd3-ease';
 import { transition } from 'd3-transition';
 

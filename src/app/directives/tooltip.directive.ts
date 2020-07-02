@@ -1,4 +1,15 @@
-import { Directive, Input, ViewContainerRef, Renderer2, OnDestroy, HostListener, OnChanges } from '@angular/core';
+import {
+  Directive,
+  Input,
+  ViewContainerRef,
+  Renderer2,
+  OnDestroy,
+  HostListener,
+  OnChanges,
+  Inject,
+  PLATFORM_ID
+} from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
 @Directive({
   selector: '[appTooltip]'
@@ -6,19 +17,28 @@ import { Directive, Input, ViewContainerRef, Renderer2, OnDestroy, HostListener,
 export class TooltipDirective implements OnChanges, OnDestroy {
   @Input() text!: string;
 
+  isBrowser: boolean = isPlatformBrowser(this.platform_id);
   el: HTMLElement;
   tooltip!: HTMLElement;
   body: HTMLBodyElement;
 
-  constructor(private viewContainerRef: ViewContainerRef, private renderer: Renderer2) {
-    this.el = this.viewContainerRef.element.nativeElement;
-    this.body = document.body as HTMLBodyElement;
+  constructor(
+    private viewContainerRef: ViewContainerRef,
+    private renderer: Renderer2,
+    @Inject(PLATFORM_ID) private platform_id: Object
+  ) {
+    if (this.isBrowser) {
+      this.el = this.viewContainerRef.element.nativeElement;
+      this.body = document.body as HTMLBodyElement;
+    }
   }
 
   ngOnChanges(): void {
-    const container = this.body.querySelector('.tooltip-container') as HTMLElement;
-    if (container && this.text) {
-      container.innerHTML = this.text;
+    if (this.isBrowser) {
+      const container = this.body.querySelector('.tooltip-container') as HTMLElement;
+      if (container && this.text) {
+        container.innerHTML = this.text;
+      }
     }
   }
 
