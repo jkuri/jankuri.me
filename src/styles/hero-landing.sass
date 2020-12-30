@@ -1,0 +1,87 @@
+.hero-first
+  background: $background
+  position: relative
+
+  .hero-first-bg
+    position: absolute
+    top: 0
+    right: 0
+    bottom: 0
+    left: 0
+    width: 100%
+    height: 100%
+
+  h1, h2
+    display: block
+    text-align: center
+
+  h1
+    color: $white
+    font-size: 46px
+    line-height: 50px
+    font-weight: $weight-normal
+
+    +mobile
+      font-size: 28px
+
+  h2
+    color: $white
+    font-size: 22px
+    line-height: 36px
+    font-weight: $weight-normal
+
+    +mobile
+      font-size: 18px
+
+  .more-buttons
+    width: 100%
+    display: flex
+    align-items: center
+    justify-content: center
+    margin: 40px 0 150px 0
+
+    .more-button
+      outline: none
+      border: 1px solid $white
+      color: $white
+      padding: 15px 35px
+      font-size: 14px
+      margin-right: 15px
+      cursor: pointer
+      text-decoration: none
+      display: inline-flex
+      justify-content: center
+      align-items: center
+      font-weight: $weight-medium
+      border-radius: 4px
+      background: $white
+      color: $background
+
+      +mobile
+        font-size: 14px
+
+      i
+        margin-right: 10px
+        font-size: 20px
+
+  .avatar-wrapper
+    display: flex
+    align-items: center
+    justify-content: center
+    width: 100%
+    height: 220px
+
+    .avatar-container
+      display: flex
+      align-items: center
+      justify-content: center
+      width: 160px
+      height: 160px
+      border-radius: 50%
+      background: $white
+
+      .avatar
+        display: block
+        width: 150px
+        height: 150px
+        border-radius: 50%
