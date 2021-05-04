@@ -1,8 +1,8 @@
-FROM node:15-alpine as build
+FROM node:16-alpine as build
 
 WORKDIR /app
 COPY . /app/
-RUN npm install && npm run build:ssr
+RUN npm install --legacy-peer-deps && npm run build:ssr
 
 FROM alpine:latest
 
