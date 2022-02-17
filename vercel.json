@@ -1,7 +1,6 @@
 {
   "version": 2,
   "public": true,
-  "name": "jkuri",
   "rewrites": [{ "source": "/(.*)", "destination": "/api" }],
   "functions": {
     "api/index.js": {
