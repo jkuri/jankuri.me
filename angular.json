@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "jankuri-com": {
+    "jankuri-me": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
@@ -43,9 +43,7 @@
                 "output": "/assets/fonts/fa"
               }
             ],
-            "styles": [
-              "src/styles/app.sass"
-            ],
+            "styles": ["src/styles/app.sass"],
             "stylePreprocessorOptions": {
               "includePaths": ["src/styles"]
             },
@@ -84,18 +82,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "jankuri-com:build"
+            "browserTarget": "jankuri-me:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "jankuri-com:build:production"
+              "browserTarget": "jankuri-me:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "jankuri-com:build"
+            "browserTarget": "jankuri-me:build"
           }
         },
         "test": {
@@ -122,37 +120,22 @@
                 "output": "/assets/fonts/fa"
               }
             ],
-            "styles": [
-              "src/styles/app.sass"
-            ],
+            "styles": ["src/styles/app.sass"],
             "stylePreprocessorOptions": {
               "includePaths": ["src/styles"]
             },
             "scripts": []
           }
         },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "tsconfig.app.json",
-              "tsconfig.spec.json",
-              "e2e/tsconfig.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
-        },
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "jankuri-com:serve"
+            "devServerTarget": "jankuri-me:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "jankuri-com:serve:production"
+              "devServerTarget": "jankuri-me:serve:production"
             }
           }
         },
@@ -161,7 +144,9 @@
           "options": {
             "outputPath": "dist/server",
             "main": "server.ts",
-            "tsConfig": "tsconfig.server.json"
+            "tsConfig": "tsconfig.server.json",
+            "sourceMap": true,
+            "optimization": false
           },
           "configurations": {
             "production": {
@@ -175,29 +160,28 @@
               "sourceMap": false,
               "optimization": true
             }
-          }
+          },
+          "defaultConfiguration": ""
         },
         "serve-ssr": {
           "builder": "@nguniversal/builders:ssr-dev-server",
           "options": {
-            "browserTarget": "jankuri-com:build",
-            "serverTarget": "jankuri-com:server"
+            "browserTarget": "jankuri-me:build",
+            "serverTarget": "jankuri-me:server"
           },
           "configurations": {
             "production": {
-              "browserTarget": "jankuri-com:build:production",
-              "serverTarget": "jankuri-com:server:production"
+              "browserTarget": "jankuri-me:build:production",
+              "serverTarget": "jankuri-me:server:production"
             }
           }
         },
         "prerender": {
           "builder": "@nguniversal/builders:prerender",
           "options": {
-            "browserTarget": "jankuri-com:build:production",
-            "serverTarget": "jankuri-com:server:production",
-            "routes": [
-              "/"
-            ]
+            "browserTarget": "jankuri-me:build:production",
+            "serverTarget": "jankuri-me:server:production",
+            "routes": ["/"]
           },
           "configurations": {
             "production": {}
@@ -206,5 +190,5 @@
       }
     }
   },
-  "defaultProject": "jankuri-com"
+  "defaultProject": "jankuri-me"
 }
