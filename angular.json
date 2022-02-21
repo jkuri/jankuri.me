@@ -75,7 +75,8 @@
                   "maximumWarning": "2kb",
                   "maximumError": "4kb"
                 }
-              ]
+              ],
+              "index": "src/index.prod.html"
             }
           }
         },

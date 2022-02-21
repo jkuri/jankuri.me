@@ -1,25 +1,140 @@
-<div class="hero is-fullheight hero-first">
-  <div class="hero-first-bg"></div>
+<div class="hero">
   <div class="hero-body">
     <div class="container">
       <div class="columns">
-        <div class="column is-6 is-offset-3">
-          <div class="avatar-wrapper">
-            <div class="avatar-container">
-              <img src="/assets/images/1796022.jpeg" class="avatar" />
+        <div class="column is-10 is-offset-1">
+          <div class="box">
+            <div class="columns is-multiline">
+              <div class="column is-3">
+                <div class="left-content">
+                  <img [src]="data.avatar" class="profile-img" />
+                  <span class="name">{{ data.name }}</span>
+                  <span class="title">{{ data.title }}</span>
+                  <div class="info-container">
+                    <div class="info-item">
+                      <i class="far fa-envelope"></i>
+                      <span>{{ data.email }}</span>
+                    </div>
+                    <div class="info-item">
+                      <i class="fas fa-map-marker-alt"></i>
+                      <span>{{ data.location }}</span>
+                    </div>
+                    <div class="info-item">
+                      <i class="fas fa-phone-square-alt"></i>
+                      <span>{{ data.phone }}</span>
+                    </div>
+                    <div class="info-item">
+                      <a target="_blank" [href]="data.githubProfile">
+                        <i class="fab fa-github-square"></i>
+                        <span>{{ data.githubProfile }}</span>
+                      </a>
+                    </div>
+                    <div class="info-item">
+                      <a target="_blank" [href]="data.linkedinProfile">
+                        <i class="fab fa-linkedin-in"></i>
+                        <span>{{ data.linkedinProfile | truncate: [22, '...'] }}</span>
+                      </a>
+                    </div>
+                    <div class="info-item">
+                      <a target="_blank" [href]="data.npmProfile">
+                        <i class="fab fa-npm"></i>
+                        <span>{{ data.npmProfile | truncate: [22, '...'] }}</span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="column is-9">
+                <div class="main-content">
+                  <section class="main-section">
+                    <h1>Professional Summary</h1>
+                    <p>{{ data.summary }}</p>
+                  </section>
+                  <section class="main-section">
+                    <h1>Work Experience</h1>
+                    <div class="work-experience-container">
+                      <div class="work-experience-item" *ngFor="let w of data.work">
+                        <div class="work-experience-top">
+                          <span class="title">{{ w.title }}</span>
+                          <span class="tag">{{ w.type }}</span>
+                        </div>
+                        <div class="work-experience-info">
+                          <div class="company-info">
+                            <span class="info">
+                              <i class="far fa-building"></i>
+                              <span>{{ w.company }}</span>
+                            </span>
+                            <span class="info ml20">
+                              <i class="fas fa-map-marker-alt"></i>
+                              <span>{{ w.location }}</span>
+                            </span>
+                          </div>
+                          <div class="duration-info">
+                            <i class="far fa-calendar-alt"></i>
+                            <span>{{ w.start | date: 'MMMM, y' }} - {{ w.end | date: 'MMMM, y' }}</span>
+                          </div>
+                        </div>
+                        <div class="work-experience-description">
+                          <span>{{ w.description }}</span>
+                        </div>
+                        <div class="tags">
+                          <span class="tag" *ngFor="let t of w.tags">{{ t }}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </section>
+                  <section class="main-section">
+                    <h1>Languages</h1>
+                    <div class="languages-container">
+                      <div class="language-item" *ngFor="let l of data.languages">
+                        <span class="title">{{ l.title }}</span>
+                        <span class="knowledge">{{ l.proficiency }}</span>
+                      </div>
+                    </div>
+                  </section>
+                  <section class="main-section">
+                    <h1>Projects</h1>
+                    <div class="projects-container">
+                      <div class="project-item" *ngFor="let p of data.projects">
+                        <div class="project-item-top">
+                          <span class="title">{{ p.title }}</span>
+                          <a class="url" target="_blank" [href]="p.url">
+                            <i class="fas fa-link"></i>
+                            <span>{{ p.url }}</span>
+                          </a>
+                        </div>
+                        <span class="description">
+                          <span>{{ p.description }}</span>
+                        </span>
+                        <span class="tags">
+                          <span class="tag" *ngFor="let t of p.tags">{{ t }}</span>
+                        </span>
+                      </div>
+                    </div>
+                  </section>
+                  <section class="main-section">
+                    <h1>Education</h1>
+                    <div class="education-container">
+                      <div class="education-item" *ngFor="let e of data.education">
+                        <div class="title">
+                          <span>{{ e.title }}</span>
+                        </div>
+                        <div class="school-info">
+                          <div class="edu-info">
+                            <i class="far fa-building"></i>
+                            <span>{{ e.school }}</span>
+                          </div>
+                          <div class="duration-info">
+                            <i class="far fa-calendar-alt"></i>
+                            <span>{{ e.start | date: 'MMMM, y' }} - {{ e.end | date: 'MMMM, y' }}</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </section>
+                </div>
+              </div>
             </div>
-          </div>
-          <h1>Senior Software Engineer</h1>
-          <h2>Mozirje, Slovenia</h2>
-          <div class="more-buttons">
-            <a class="more-button" href="https://github.com/jkuri">
-              <i class="fab fa-github"></i>
-              GitHub Profile
-            </a>
-            <a class="more-button" href="https://si.linkedin.com/in/jan-kuri-1a1374b4">
-              <i class="fab fa-linkedin"></i>
-              LinkedIn Profile
-            </a>
           </div>
         </div>
       </div>

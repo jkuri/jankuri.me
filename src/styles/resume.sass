@@ -1,0 +1,261 @@
+$white: #fff
+$black: #000
+
+$background: #fcfcfc
+$text-primary: #333
+$text-secondary: #666
+$border-default: #F0F1F5
+$blue: #3291ff
+
+.box
+  border-radius: 4px
+  background: $background
+  border: 1px solid $border-default
+  padding: 30px 30px 60px 30px
+  font-family: $font-family
+  color: $text-primary
+
+  .left-content
+    display: block
+    width: 100%
+
+    .profile-img
+      display: block
+      height: 130px
+      border-radius: 50%
+      margin: 0 auto
+      margin-bottom: 20px
+
+    .name
+      display: block
+      font-size: 24px
+      font-weight: $weight-black
+      margin-bottom: 10px
+      text-align: center
+
+    .title
+      display: block
+      font-size: 16px
+      font-weight: $weight-regular
+      margin-bottom: 20px
+      text-align: center
+
+    .info-container
+      display: block
+      width: 100%
+      height: 100%
+
+    .info-divider
+      display: block
+      margin: 20px 0
+
+    .info-item
+      border-bottom: 1px solid $border-default
+      width: 100%
+      height: 40px
+      display: flex
+      align-items: center
+      justify-content: flex-start
+      padding: 0 5px
+      font-family: $font-family
+
+      i
+        font-size: 13px
+        margin-right: 10px
+
+        &.fa-npm
+          margin-right: 8px
+
+      span, a
+        font-size: 13px
+        font-weight: $weight-medium
+        color: $text-primary
+        text-decoration: none
+
+
+  .main-content
+
+    .main-section
+      display: block
+
+      &:not(:first-child)
+        margin-top: 50px
+
+    h1
+      display: block
+      font-size: 24px
+      font-weight: $weight-black
+      margin-bottom: 15px
+
+    p
+      display: block
+      text-align: left
+      font-weight: $weight-regular
+      margin-bottom: 20px
+      font-size: 15px
+      line-height: 22px
+
+    .work-experience-container
+      display: block
+      width: 100%
+      height: 100%
+
+      .work-experience-item
+        display: block
+        width: 100%
+        border-bottom: 1px solid $border-default
+        margin-bottom: 15px
+        padding-bottom: 10px
+
+        .work-experience-top
+          display: flex
+          width: 100%
+          align-items: center
+          justify-content: space-between
+
+          .title
+            font-size: 18px
+            font-weight: $weight-regular
+
+          .tag
+            background: $blue
+            font-weight: $weight-bold
+            font-size: 13px
+            border-radius: 8px
+            padding: 5px 25px
+            display: inline-block
+            color: $white
+
+            +mobile
+              padding: 5px
+
+        .work-experience-info
+          display: flex
+          align-items: center
+          justify-content: space-between
+          margin: 5px 0 10px
+
+          .info, .duration-info
+            color: $text-secondary
+            font-size: 12px
+            font-weight: $weight-bold
+
+            i
+              font-size: 12px
+              margin-right: 8px
+
+            &.ml20
+              margin-left: 20px
+
+        .work-experience-description
+          display: block
+          font-size: 13px
+          padding: 5px 0
+          margin-bottom: 5px
+
+        .tags
+          display: block
+          width: 100%
+
+          .tag
+            display: inline-block
+            background: $white
+            color: darken($text-secondary, 10)
+            border: 1px solid $border-default
+            padding: 4px 10px
+            border-radius: 4px
+            margin: 0 5px 5px 0
+
+  .languages-container
+
+    .language-item
+      width: 100%
+      border-bottom: 1px solid $border-default
+      padding: 15px 0
+      display: flex
+      align-items: center
+      justify-content: space-between
+
+      .title
+        font-size: 16px
+        font-weight: $weight-regular
+        margin-bottom: 5px
+
+      .knowledge
+        display: block
+        font-size: 14px
+        font-weight: $weight-regular
+
+  .education-container
+
+    .education-item
+      width: 100%
+      border-bottom: 1px solid $border-default
+      padding: 15px 0
+
+      .title
+        display: block
+        font-size: 18px
+        margin-bottom: 10px
+
+      .school-info
+        display: flex
+        align-items: center
+        justify-content: space-between
+
+        .edu-info, .duration-info
+          color: $text-secondary
+          font-size: 13px
+          font-weight: $weight-bold
+
+          i
+            margin-right: 5px
+
+  .projects-container
+
+    .project-item
+      width: 100%
+      border-bottom: 1px solid $border-default
+      padding: 20px 0
+
+      .project-item-top
+        display: block
+        margin-bottom: 10px
+
+        .title
+          display: block
+          font-size: 16px
+          margin-bottom: 10px
+          font-weight: $weight-bold
+
+        .url
+          color: $text-secondary
+          text-decoration: none
+          font-size: 12px
+          font-weight: $weight-bold
+
+          &:hover
+            color: $text-primary
+            text-decoration: underline
+
+          i
+            margin-right: 5px
+
+      .description
+        display: block
+        color: $text-primary
+        font-size: 14px
+        font-weight: $weight-bold
+        margin-bottom: 20px
+
+      .tags
+        display: block
+
+        .tag
+          display: inline-block
+          background: $white
+          color: darken($text-secondary, 10)
+          border: 1px solid $border-default
+          padding: 4px 10px
+          border-radius: 4px
+          margin: 0 5px 5px 0
