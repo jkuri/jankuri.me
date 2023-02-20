@@ -48,8 +48,9 @@ export class HomeComponent implements OnInit {
   }
 
   render() {
-    this.w = this.bgElement.clientWidth;
-    this.h = this.bgElement.clientHeight;
+    const { width, height } = this.bgElement.getBoundingClientRect();
+    this.w = width;
+    this.h = height;
     select(this.bgElement).select('svg').remove();
 
     const svg = select(this.bgElement).append('svg').attr('width', this.w).attr('height', this.h);
@@ -59,7 +60,7 @@ export class HomeComponent implements OnInit {
     const x = scaleLinear().domain([0, data.length - 1]).range([0, this.w]);
     const y = scaleLinear().domain([0, 150]).range([this.h, 0]);
 
-    this.g = svg.append('g');
+    this.g = svg.append('g').attr('width', this.w).attr('height', this.h);
 
     this.g.selectAll('circle')
       .data(data)
