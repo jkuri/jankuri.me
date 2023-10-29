@@ -25,12 +25,16 @@ export class HomeComponent implements OnInit {
     }
 
     this.bgElement = this.elementRef.nativeElement.querySelector('.hero-first-bg');
+    this.delay(10).then(() => this.init());
+  }
+
+  private init(): void {
     this.render();
     this.x = 0;
     this.animation();
   }
 
-  animation = () => {
+  private animation = () => {
     this.x = (this.x < 30) ? this.x += 1 : 0;
     this.g.selectAll('circle')
       .transition()
@@ -47,12 +51,12 @@ export class HomeComponent implements OnInit {
       });
   }
 
-  render() {
+  private render() {
     this.w = this.bgElement.clientWidth;
     this.h = this.bgElement.clientHeight;
     select(this.bgElement).select('svg').remove();
 
-    const svg = select(this.bgElement).append('svg').attr('width', this.w).attr('height', this.h);
+    const svg = select(this.bgElement).append('svg').attr('width', this.w).attr('height', this.h).attr('class', 'svg-wrapper');
     let g = svg.append('g');
 
     let data = [20, 24, 20, 20, 25, 27, 26, 20, 21, 22, 24, 20, 28, 20, 28, 26, 25, 28, 22, 24, 29, 21, 30, 21, 27, 22, 23, 28, 30, 24];
@@ -68,7 +72,7 @@ export class HomeComponent implements OnInit {
       .attr('r', (d: any, i: number) => this.getRandomInt(this.w < 500 ? 5 : 10, this.w < 500 ? 10 : 30))
       .attr('cx', (d: any, i: number) => (this.w / data.length) * i)
       .attr('cy', (d: any, i: number) => this.getRandomInt(0, this.w))
-      .attr('fill', '#34BEEB');
+      .attr('fill', '#63CCF0');
 
     g.selectAll('circle')
       .data(data)
@@ -107,8 +111,12 @@ export class HomeComponent implements OnInit {
       .attr('stroke', 'none');
   }
 
-  getRandomInt(min: number, max: number): number {
+  private getRandomInt(min: number, max: number): number {
     return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+  private delay(ms: number): Promise<void> {
+    return new Promise(resolve => setTimeout(resolve, ms));
   }
 
   @HostListener('window:resize', ['$event']) onResize(e: Event) {
