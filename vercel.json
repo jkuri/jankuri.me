@@ -4,7 +4,7 @@
   "rewrites": [{ "source": "/(.*)", "destination": "/api" }],
   "functions": {
     "api/index.js": {
-      "includeFiles": "dist/browser/**"
+      "includeFiles": "dist/app/browser/**"
     }
   }
 }

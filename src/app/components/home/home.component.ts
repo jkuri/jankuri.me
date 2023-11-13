@@ -7,17 +7,18 @@ import 'd3-transition';
 
 @Component({
   selector: 'app-home',
+  standalone: true,
   templateUrl: './home.component.html'
 })
 export class HomeComponent implements OnInit {
   private isBrowser: boolean = isPlatformBrowser(this.platform_id);
-  bgElement: HTMLElement;
-  w: number;
-  h: number;
-  g: any;
-  x: number;
+  bgElement!: HTMLElement;
+  w!: number;
+  h!: number;
+  g!: any;
+  x!: number;
 
-  constructor(private elementRef: ElementRef, @Inject(PLATFORM_ID) private platform_id) { }
+  constructor(private elementRef: ElementRef, @Inject(PLATFORM_ID) private platform_id: Object) { }
 
   ngOnInit() {
     if (!this.isBrowser) {

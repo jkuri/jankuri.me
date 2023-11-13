@@ -1,3 +1,3 @@
-const server = require('../dist/server/main');
+import { app } from '../dist/app/server/server.mjs';
 
-module.exports = server.app();
+export default app();
