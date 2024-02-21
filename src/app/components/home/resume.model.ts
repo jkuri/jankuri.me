@@ -252,12 +252,6 @@ export const resume: Resume = {
       tags: ['Angular', 'TypeScript', 'D3']
     },
     {
-      title: 'bore',
-      url: 'https://github.com/jkuri/bore',
-      description: ['Reverse HTTP proxy tunnel via secure SSH connections'].join(' '),
-      tags: ['Go', 'Angular']
-    },
-    {
       title: 'OpenCV FFMpeg RTMP Stream',
       url: 'https://github.com/jkuri/opencv-ffmpeg-rtmp-stream',
       description: ['OpenCV FFMpeg Live Video Stream over RTMP protocol'].join(' '),
