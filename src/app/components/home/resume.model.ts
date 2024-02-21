@@ -189,10 +189,19 @@ export const resume: Resume = {
       tags: ['TypeScript', 'Angular', 'RxJS', 'Golang', 'Docker']
     },
     {
-      title: 'bterm',
-      url: 'https://github.com/bleenco/bterm',
-      description: ['Cross-platform terminal emulator built with web technologies'].join(' '),
-      tags: ['TypeScript', 'Angular', 'RxJS', 'Node.JS', 'Electron']
+      title: 'ngx-realtime-chart',
+      url: 'https://github.com/jkuri/ngx-realtime-chart',
+      description: ['Library designed for live streaming data in Angular applications.'].join(' '),
+      tags: ['TypeScript', 'Angular', 'D3']
+    },
+    {
+      title: 'bore',
+      url: 'https://github.com/jkuri/bore',
+      description: [
+        'Reverse HTTP/TCP proxy to help you expose a local server behind',
+        'a NAT or firewall to the internet via secure SSH tunnels.'
+      ].join(' '),
+      tags: ['Golang', 'TypeScript', 'Angular']
     },
     {
       title: 'ngx-uploader',
