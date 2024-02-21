@@ -64,7 +64,7 @@ export const resume: Resume = {
   title: 'Software Developer',
   email: 'jkuri88@gmail.com',
   phone: '+386 31 472 535',
-  location: 'Mozirje, Slovenia',
+  location: 'Slovenj Gradec, Slovenia',
   githubProfile: 'https://github.com/jkuri',
   linkedinProfile: 'https://www.linkedin.com/in/jkuri/',
   npmProfile: 'https://www.npmjs.com/~jkuri',
@@ -81,6 +81,26 @@ export const resume: Resume = {
   skills: ['JavaScript', 'TypeScript', 'RxJS', 'Angular', 'Node.JS', 'MySQL', 'SQLite', 'Git', 'Linux', 'SASS'],
   skillsAdditional: ['Go', 'C', 'C++', 'Perl', 'Python', 'PostgreSQL'],
   work: [
+    {
+      title: 'Senior Front-End Engineer',
+      company: 'Bleenco GmbH',
+      type: 'Contract',
+      start: setDate(2023, 11),
+      end: setDate(2024, 2),
+      description: ['Working on a PipeLogic.ai project'].join(' '),
+      tags: ['TypeScript', 'Angular', 'TailwindCSS'],
+      location: 'Remote / Munich, Germany'
+    },
+    {
+      title: 'Head of Development',
+      company: 'MELD d.o.o.',
+      type: 'Contract',
+      start: setDate(2022, 7),
+      end: setDate(2023, 11),
+      description: ['Building and planning various projects.'].join(' '),
+      tags: ['TypeScript', 'Angular', 'SASS', 'Node.JS', 'Go', 'Ember.js', 'Ruby on Rails', 'PostgreSQL'],
+      location: 'Slovenj Gradec, Slovenia'
+    },
     {
       title: 'Senior Full Stack Developer',
       company: 'Bleenco GmbH',
@@ -165,8 +185,8 @@ export const resume: Resume = {
     {
       title: 'Abstruse CI',
       url: 'https://github.com/bleenco/abstruse',
-      description: ['Continuous Integration platform build with Node.JS and Docker'].join(' '),
-      tags: ['TypeScript', 'Angular', 'RxJS', 'Node.JS', 'Docker']
+      description: ['Continuous Integration Platform'].join(' '),
+      tags: ['TypeScript', 'Angular', 'RxJS', 'Golang', 'Docker']
     },
     {
       title: 'bterm',
