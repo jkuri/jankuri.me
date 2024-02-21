@@ -32,13 +32,13 @@
                     <div class="info-item">
                       <a target="_blank" [href]="data.linkedinProfile">
                         <i class="fab fa-linkedin-in"></i>
-                        <span>{{ data.linkedinProfile | truncate: [22, '...'] }}</span>
+                        <span>{{ data.linkedinProfile | truncate : [40, '...'] }}</span>
                       </a>
                     </div>
                     <div class="info-item">
                       <a target="_blank" [href]="data.npmProfile">
                         <i class="fab fa-npm"></i>
-                        <span>{{ data.npmProfile | truncate: [22, '...'] }}</span>
+                        <span>{{ data.npmProfile | truncate : [40, '...'] }}</span>
                       </a>
                     </div>
                   </div>
@@ -71,7 +71,7 @@
                           </div>
                           <div class="duration-info">
                             <i class="far fa-calendar-alt"></i>
-                            <span>{{ w.start | date: 'MMMM, y' }} - {{ w.end | date: 'MMMM, y' }}</span>
+                            <span>{{ w.start | date : 'MMMM, y' }} - {{ w.end | date : 'MMMM, y' }}</span>
                           </div>
                         </div>
                         <div class="work-experience-description">
@@ -126,7 +126,7 @@
                           </div>
                           <div class="duration-info">
                             <i class="far fa-calendar-alt"></i>
-                            <span>{{ e.start | date: 'MMMM, y' }} - {{ e.end | date: 'MMMM, y' }}</span>
+                            <span>{{ e.start | date : 'MMMM, y' }} - {{ e.end | date : 'MMMM, y' }}</span>
                           </div>
                         </div>
                       </div>
